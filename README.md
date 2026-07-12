@@ -17,9 +17,24 @@ This repository features an end-to-end computer vision pipeline optimized for re
 
 ## Directory Layout
 ```text
-├── src/
-│   ├── preprocessing/  # Tiling, orthorectification, and geo-referencing
-│   ├── models/         # PyTorch segmentation architectures
-│   └── utils/          # GeoTIFF and shapefile helpers
-├── notebooks/          # Exploratory Jupyter notebooks
-└── config/             # Model hyperparameters and pipeline configurations
+├── .github/
+│   └── workflows/          # GitHub Actions for automated testing (CI/CD)
+├── data/
+│   └── sample_footprint.json # NEVER commit large GeoTIFFs; use tiny sample vectors
+├── docs/
+│   ├── API.md              # Documentation of your main functions
+│   └── methodology.md      # Mathematical/scientific logic behind your code
+├── src/                    # All core processing logic goes here
+│   ├── __init__.py
+│   ├── io.py               # Raster loading (Rasterio), cloud-optimized reading
+│   ├── preprocessing.py    # Calibration, atmospheric correction, or de-noising
+│   ├── analysis.py         # Hyperspectral indices, ML models, or pixel classification
+│   └── utils.py            # Coordinate transformations, geometry helpers
+├── tests/                  # Unit tests (crucial for geospatial edge cases)
+│   ├── __init__.py
+│   ├── test_io.py
+│   └── test_analysis.py
+├── .gitignore              # Block .tif, .hdfe, .nc, and heavy data formats
+├── Dockerfile              # Containerization for reproducible environments
+├── README.md               # The most critical file for the reviewer
+└── requirements.txt        # Clear, pinned dependencies
